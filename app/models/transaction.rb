@@ -9,21 +9,21 @@ class Transaction < ApplicationRecord
   
    def is_withdrawl_valid
      if self.txn_type == "W"
-	    if self.amount > self.account.balance
-	      errors.add(:amount, "should be less than available balance")
-	    end 
+      if self.amount > self.account.balance
+        errors.add(:amount, "should be less than available balance")
+      end 
      end
-  end	
-			
+  end 
+      
    def change_balance
       if self.txn_type == "W"
         new_balance = self.account.balance - self.amount
       else
-   	    new_balance = self.account.balance + self.amount
+        new_balance = self.account.balance + self.amount
       end
-	
+  
       unless self.account.update_attributes(balance: new_balance)
-	    raise "Transaction Incomplete"
-	    end	
+       raise "Transaction Incomplete"
+      end 
     end
  end

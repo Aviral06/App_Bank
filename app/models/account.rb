@@ -11,7 +11,7 @@ class Account < ApplicationRecord
    
   def balance_is_valid
     if self.balance < 0
-	  errors.add(:balance, "should be positive")
+      errors.add(:balance, "should be positive")
     end
   end 
 end
