@@ -23,7 +23,7 @@ class Transaction < ApplicationRecord
       end
 	
       unless self.account.update_attributes(balance: new_balance)
-	     raise "Transaction Incomplete"
+	    raise "Transaction Incomplete"
 	    end	
-   end
-end
+    end
+ end
