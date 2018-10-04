@@ -1,4 +1,4 @@
-class Branch < ApplicatonRecord
+class Branch < ApplicationRecord
 		belongs_to :bank
 		has_many :users
 		validates :IFSC, presence: true, length: {maximum: 5}
