@@ -9,9 +9,9 @@ class Account < ApplicationRecord
   
  private
    
-  def balance_is_valid
-    if self.balance < 0
-      errors.add(:balance, "should be positive")
-    end
-  end 
+ def balance_is_valid
+  if self.balance < 0
+    errors.add(:balance, "should be positive")
+  end
+ end 
 end
