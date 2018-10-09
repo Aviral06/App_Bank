@@ -1,4 +1,7 @@
 class BanksController < ApplicationController
+
+skip_before_action :verify_authenticity_token
+
  def show
  begin
    @bank = Bank.find(params[:id])
@@ -56,6 +59,20 @@ def edit
   end
  end
 end
+
+def destroy
+		begin
+			@bank = Bank.find(params[:id])
+			respond_to do |format|
+			  @bank.destroy
+				format.json { render json: {}, status: :ok }
+			end  
+		rescue ActiveRecord::RecordNotFound => e
+			respond_to do |format|
+				format.json { render json: {error:e.message}, status: :unprocessable_entity }
+			end
+		end
+	end
 
 def update
  begin
